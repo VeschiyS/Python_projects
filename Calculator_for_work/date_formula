@@ -1,0 +1,8 @@
+from datetime import datetime
+day1 = input('Введи первую дату отчета в формате ч/м/г без нолей:\n')
+day2 = input('Введи вторую дату отчета:\n') 
+date1 = datetime.strptime(day1, '%m/%d/%Y') #перевод введенных данных в формат даты
+date2 = datetime.strptime(day2, '%m/%d/%Y')
+num_days = (date2 - date1).days
+print('Выполнено поручений за', num_days, 'дней')
+#поиск по ключевым словам, цвету шапки сайта.
