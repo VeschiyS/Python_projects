@@ -1,8 +1,8 @@
 from datetime import datetime
-day1 = input('Введи первую дату отчета в формате ч/м/г без нолей:\n')
+day1 = input('Введи первую дату отчета в формате м/ч/г без нолей в дне/месяце:\n')
 day2 = input('Введи вторую дату отчета:\n') 
 date1 = datetime.strptime(day1, '%m/%d/%Y') #перевод введенных данных в формат даты
-date2 = datetime.strptime(day2, '%m/%d/%Y')
-num_days = (date2 - date1).days
+date2 = datetime.strptime(day2, '%m/%d/%Y') #strptime - функция, переводит строковое представление дат в объект datetime
+num_days = (date2 - date1).days #.days - атрибут, показывающий разницу дней между датами
 print('Выполнено поручений за', num_days, 'дней')
 #поиск по ключевым словам, цвету шапки сайта.
