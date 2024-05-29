@@ -1,8 +1,38 @@
-from datetime import datetime
-day1 = input('Введи первую дату отчета в формате м/ч/г без нолей в дне/месяце:\n')
-day2 = input('Введи вторую дату отчета:\n') 
-date1 = datetime.strptime(day1, '%m/%d/%Y') #перевод введенных данных в формат даты
-date2 = datetime.strptime(day2, '%m/%d/%Y') #strptime - функция, переводит строковое представление дат в объект datetime
+from datetime import datetime as dt
+day1 = input('введи первую дату отчета в формате ч.м.г:\n')
+day2 = input('введи вторую дату отчета:\n') 
+date1 = dt.strptime(day1, '%d.%m.%Y') #перевод введенных данных в формат даты
+date2 = dt.strptime(day2, '%d.%m.%Y') #strptime - функция, переводит строковое представление дат в объект datetime
 num_days = (date2 - date1).days #.days - атрибут, показывающий разницу дней между датами
-print('Выполнено поручений за', num_days, 'дней')
+dmy = {'d': num_days}
+words = {'d': ['дней', 'день', 'дня']}
+out = []
+for k, v in dmy.items():
+  remainder = v % 10
+  if v == 0 or remainder == 0 or remainder >= 5 or v in range (11, 19):
+    st = str(v), words[k][0]
+  elif remainder == 1:  
+    st = str(v), words[k][1]      
+  else:  
+    st = str(v), words[k][2]
+  out.append(" ".join(st))
+    
+print('Выполнено поручений за', " ".join(out))
+num_weeks = num_days / 7
+import math
+num_weeks1 = math.ceil(num_weeks)
+dmy = {'w': num_weeks1}
+words = {'w': ['недель', 'неделю', 'недели']}
+out = []
+for k, v in dmy.items():
+  remainder = v % 10
+  if v == 0 or remainder == 0 or remainder >= 5 or v in range (11, 19):
+    st = str(v), words[k][0]
+  elif remainder == 1:  
+    st = str(v), words[k][1]      
+  else:  
+    st = str(v), words[k][2]
+  out.append(" ".join(st))
+  
+print('Выполнено поручений за', " ".join(out), (num_weeks))
 #поиск по ключевым словам, цвету шапки сайта.
